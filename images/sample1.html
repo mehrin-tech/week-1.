@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+  <label>Name:</label><br />
+  <input type="text" id="name" /><br />
+  <span id="nameError" style="color:red; display:none;">Name is required</span><br /><br />
+
+  <label>Email:</label><br />
+  <input type="text" id="email" /><br />
+  <span id="emailError" style="color:red; display:none;">Email is required</span><br /><br />
+
+  <button type="submit">Submit</button>
+</form>
+
+<p id="successMessage" style="color:green; display:none;">Form submitted successfully!</p>
+<script>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // prevent form from reloading the page
+
+  let isValid = true;
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  // Reset error messages
+  document.getElementById("nameError").style.display = "none";
+  document.getElementById("emailError").style.display = "none";
+  document.getElementById("successMessage").style.display = "none";
+
+  // Validate name
+  if (name === "") {
+    document.getElementById("nameError").style.display = "block";
+    isValid = false;
+  }
+
+  // Validate email
+  if (email === "") {
+    document.getElementById("emailError").style.display = "block";
+    isValid = false;
+  }
+
+  // If valid, show success message
+  if (isValid) {
+    document.getElementById("successMessage").style.display = "block";
+  }
+});
+
+</script>
+</body>
+</html>
